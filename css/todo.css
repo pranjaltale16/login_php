@@ -1,0 +1,118 @@
+* {
+	margin: 0;
+	
+	border: 0;
+
+
+}
+
+.header
+{
+	
+	margin: auto;	
+	background-color: #4CAF99;
+	color: white;
+	display: block;            /* diff between block inline and inline bloack and how */
+	font-size: 30px;
+	padding:7px;
+	min-width: 6cm;
+}
+.text
+{
+	margin: 5px;
+	padding: 5px;
+	display: inline-block;
+	line-height: 5px;    
+	margin-top: 5px; /*i have fixed its position so how should i remove it ??? */
+	vertical-align: top;
+	padding-top:25px; 
+}
+
+.add
+{ 	font-color: white;
+	font-size: .5cm;
+	display: inline-block;
+	float: right;
+	border: 3px;
+	margin: 11px;
+	padding-top: .2cm;
+	padding-right: .5cm;
+	position: relative;
+
+}
+
+a:link
+{
+	color: white;
+	text-decoration: none;
+}
+
+.check
+
+{ position: relative;
+
+	display: inline-block;
+	color: black;
+	font-size: .4cm; 
+	font-family: cursive;
+	font-weight: bolder;
+	line-height: .9cm;
+	/*background-color:#eeeeee;*/
+	background-image: url("../images/back.jpg");
+    height:498px;
+    /*width:300px;*/
+    width: 5cm;	
+    padding: 30px;
+    text-align: left;
+
+}
+
+.check img 
+{
+
+	padding: 0px;
+	margin: auto;
+	margin-top:3cm 
+		
+}
+
+.fram
+{
+	position: relative;
+	display: inline-block;
+	float: left;
+}
+
+
+.imgs
+{	
+	vertical-align: top;
+    margin:0px auto ;
+   	width: 100px;
+    opacity: .6;
+    position: relative;
+    min-width: 100px;
+}
+
+.imgs:hover
+{
+	opacity: 1.0;
+	color: white;
+	text-decoration: none;
+}
+
+
+
+
+
+.footer
+{
+vertical-align: bottom;
+position: absolute;
+text-align: center;
+padding-top: 2px;
+padding-bottom: 8px;
+width: 100%;
+color: white;
+background-color: black
+}
