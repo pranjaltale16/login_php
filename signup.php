@@ -3,31 +3,31 @@
 $servername ="172.25.55.156";
 $username = "test";
 $password = "test";
-$conn = mysqli_connect($servername,$username,$password);
-$sql = mysqli_select_db($conn,"test");
+$database = "test";
+$conn = mysqli_connect($servername,$username,$password,$database);
 
 
-$name = " ";
 
-$name = htmlspecialchars($_POST['name']);
+$name=$_POST['name'];
 $mno = htmlspecialchars($_POST['mobileno']);
 $email =$_POST['email'];
 $uname =$_POST['username'];
-$pone = $_POST['password1'];
-$ptwo = $_POST['password2'];
+$pone = $_POST['passwrd1'];
+$ptwo = $_POST['passwrd2'];
 $gen = $_POST['gender'];
 $dob = $_POST['dob'];
 
-$sql = "INSERT INTO pranjal_signup(name,mobile,email,username,passwrd1,passwrd2,gender,DOB) VALUES ('$name','$mno','$email','$uname','$pone','$ptwo','$gen','$dob')";
 
-if (mysqli_query($conn, $sql)) {
+$sql = "INSERT INTO pranjal_signup(name,mobile,email,username,passwrd1,passwrd2,gender,DOB) VALUES ('$name','$mno','$email','$uname','$pone','$ptwo','$gen','$dob')";
+if($pone == $ptwo)
+{  
+if (mysqli_query($conn, $sql)  ) {
       echo " ";
 } else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      echo "Error: " ;
 }
-
-
-mysqli_close($conn);
+}
+      mysqli_close($conn);
 ?>
 
 <html>
