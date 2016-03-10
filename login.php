@@ -1,23 +1,24 @@
-<!DOCTYPE html>
+<?php
+session_start();
+?>
+<!doctype html>
 <html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="css/sign.css">
-		<link rel="icon" href="images/favicon.ico" type="image/gif" sizes="16x16">
-	<title>SIGN-UP</title>
-	</head>
-
-	<body  >
+<head>
+    <link rel="stylesheet" type="text/css" href="css/sign.css">
 	<div class="all"   >
+</head>
+</body>
+
   <fieldset><legend>LOGIN</legend>
 		
-		<form method ="post" action = "check()">
+		<form method ="post" action = "auto.php ">
     <div class="input">
 
 	
 			  Username:&nbsp&nbsp&nbsp&nbsp&nbsp 
-  			<input type="text" name=username" placeholder = "Pranjaltale16"><br><br>
+  			<input type="text" name="username" placeholder = "Pranjaltale16"><br><br>
         Password:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
-  			<input type="password" name="passwrd1" placeholder = "**********" ><br><br>
+  			<input type="password" name="passwrd" placeholder = "**********" ><br><br>
 		</div>
     <input type ="submit" value = "LOGIN" >
     </form>

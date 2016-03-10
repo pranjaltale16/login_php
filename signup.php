@@ -1,4 +1,9 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
+
 <?php
 $servername ="172.25.55.156";
 $username = "test";
@@ -7,26 +12,37 @@ $database = "test";
 $conn = mysqli_connect($servername,$username,$password,$database);
 
 
+if ($_SERVER["REQUEST_METHOD"] == "POST"){ 
+$name=test_input($_POST['name']);
+$mno = test_input($_POST['mobileno']);
+$email =test_input($_POST['email']);
+$uname =test_input($_POST['username']);
+$pone = test_input($_POST['passwrd1']);
+$ptwo = test_input($_POST['passwrd2']);
+$gen = test_input($_POST['gender']);
+$dob = test_input($_POST['dob']);
+}
 
-$name=$_POST['name'];
-$mno = htmlspecialchars($_POST['mobileno']);
-$email =$_POST['email'];
-$uname =$_POST['username'];
-$pone = $_POST['passwrd1'];
-$ptwo = $_POST['passwrd2'];
-$gen = $_POST['gender'];
-$dob = $_POST['dob'];
+function test_input($data) {
+        $data = trim($data);
+           $data = stripslashes($data);
+              $data = htmlspecialchars($data);
+                 return $data;
+                    }
+ 
 
 
-$sql = "INSERT INTO pranjal_signup(name,mobile,email,username,passwrd1,passwrd2,gender,DOB) VALUES ('$name','$mno','$email','$uname','$pone','$ptwo','$gen','$dob')";
-if($pone == $ptwo)
-{  
+$sql = "INSERT INTO pranjal_signup(name,mobile,email,username,passwrd1,passwrd2,gender,DOB) VALUES ('$name','$mno','$email','$uname','$pone','$ptwo','$gen','$dob-12-12')";
+if($pone == $ptwo)  
+ {
 if (mysqli_query($conn, $sql)  ) {
-      echo " ";
-} else {
-      echo "Error: " ;
+   echo "DONE"; 
 }
+ } 
+else {
+       echo "Error try again";
 }
+
       mysqli_close($conn);
 ?>
 
@@ -66,12 +82,12 @@ if (mysqli_query($conn, $sql)  ) {
 			Year of birth:
   			<select>
   				<option>Select Year</option>
-  				<option value="first">1993</option>
-    			<option value="second">1994</option>
-          <option value="third">1995</option>
-    			<option value="fourth">1996</option>
-    			<option value="fifth">1997</option>
-    			<option value="sixth">1998</option>
+  				<option value="1993">1993</option>
+    			<option value="1994">1994</option>
+          <option value="1995">1995</option>
+    			<option value="1996">1996</option>
+    			<option value="1997">1997</option>
+    			<option value="1998">1998</option>
   			</select>
     </div>
 		<div class="foot">

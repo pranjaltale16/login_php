@@ -1,0 +1,77 @@
+[1mdiff --git a/first.html b/first.html[m
+[1mdeleted file mode 100755[m
+[1mindex 3a17115..0000000[m
+[1m--- a/first.html[m
+[1m+++ /dev/null[m
+[36m@@ -1,31 +0,0 @@[m
+[31m-<!DOCTYPE html>[m
+[31m-<html>[m
+[31m-	<head>[m
+[31m-	<title>TO-Do </title>[m
+[31m-			<link rel="stylesheet" type="text/css" href="css/todo.css">[m
+[31m-			<link rel="icon" href="images/favicon.ico" type="image/gif" sizes="16x16">[m
+[31m-	</head>[m
+[31m-[m
+[31m-	<body>[m
+[31m-			<div class="header">[m
+[31m-			 	<img src="images/icon.png" alt="todo icon"  style="width:58px;height:58px";>[m
+[31m-			 	<div class="text">Hello</div>[m
+[31m-				<span class ="add"><a href="www.google.com">Login</button></a>[m
+[31m-			</div>[m
+[31m-			<div>[m
+[31m-			<div  class="check">[m
+[31m-			<div>[m
+[31m-  				Login<br>[m
+[31m-  				Sign-Up<br>[m
+[31m-			</div>[m
+[31m-			</div>[m
+[31m-			</div>[m
+[31m-			<div class="footer">[m
+[31m-				<div class="imgs">[m
+[31m-					<a href="http://img.channeli.in/"  target="_blank">[m
+[31m-					<div class="footer-text">&copy; IMG-2K16</div>[m
+[31m-					</a>[m
+[31m-				</div>[m
+[31m-			</div>[m
+[31m-	</body>[m
+[31m-</html>[m
+[1mdiff --git a/signup.php b/signup.php[m
+[1mindex a814796..434541a 100755[m
+[1m--- a/signup.php[m
+[1m+++ b/signup.php[m
+[36m@@ -3,30 +3,26 @@[m
+ $servername ="172.25.55.156";[m
+ $username = "test";[m
+ $password = "test";[m
+[31m-$conn = mysqli_connect($servername,$username,$password);[m
+[31m-$sql = mysqli_select_db($conn,"test");[m
+[32m+[m[32m$database = "test";[m[41m[m
+[32m+[m[32m$conn = mysqli_connect($servername,$username,$password,$database);[m[41m[m
+ [m
+ [m
+ $name = " ";[m
+[31m-[m
+ $name = htmlspecialchars($_POST['name']);[m
+ $mno = htmlspecialchars($_POST['mobileno']);[m
+ $email =$_POST['email'];[m
+ $uname =$_POST['username'];[m
+[31m-$pone = $_POST['password1'];[m
+[31m-$ptwo = $_POST['password2'];[m
+[32m+[m[32m$pone = $_POST['passwrd1'];[m[41m[m
+[32m+[m[32m$ptwo = $_POST['passwrd2'];[m[41m[m
+ $gen = $_POST['gender'];[m
+ $dob = $_POST['dob'];[m
+ [m
+ $sql = "INSERT INTO pranjal_signup(name,mobile,email,username,passwrd1,passwrd2,gender,DOB) VALUES ('$name','$mno','$email','$uname','$pone','$ptwo','$gen','$dob')";[m
+ [m
+ if (mysqli_query($conn, $sql)) {[m
+[31m-      echo " ";[m
+[32m+[m[32m      echo "New record created successfully";[m[41m[m
+ } else {[m
+       echo "Error: " . $sql . "<br>" . mysqli_error($conn);[m
+[31m-}[m
+[31m-[m
+[31m-[m
+ mysqli_close($conn);[m
+ ?>[m
+ [m
