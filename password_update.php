@@ -4,10 +4,10 @@ session_start();
 <!DOCTYPE html>
  <?php
 
-  $user= test_input($_POST["username"]);    
+  $user= $_SESSION["uname"];
   $pass= test_input($_POST["passwrd"]);
-  $pass1= test_input($_POST["passwrd1"]);
-  $pass2= test_input($_POST["passwrd2"]);
+  $passa= test_input($_POST["passwrd1"]);
+  $passb= test_input($_POST["passwrd2"]);
 
 
 
@@ -29,14 +29,23 @@ function test_input($data) {
                         die("Connection failed: " . $conn->connect_error);
             }
 $e = $_SESSION["password"];
+$pass = sha1($pass);
 echo $user;   
 echo $e;
-if($pass1 == $pass2 and $e == $pass )
+echo $passa;
+echo $passb;
+$passa = sha1($passa);
+$passb = sha1($passb);
+if($passa == $passb and $e == $pass )
 {
- $sql = "UPDATE pranjal_signup set passwrd1 = '$pass1' where username = '$user' ";
+ $sql = "UPDATE pranjal_signup set passwrd1 = '$passa' where username = '$user' ";
  $result = mysqli_query($conn,$sql);
-}
 
+
+echo "<script> window.location.assign('profile.php') </script>";
+}
+else
+ { echo "try again";  }
 $conn->close();
 
 
@@ -56,14 +65,14 @@ $conn->close();
 		
 		<div class="input">
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-   			User name:&nbsp&nbsp<br> 
-  			<input type="text" name="username"><br><br>
+   			User name:&nbsp&nbsp<br>    
+  			<input type="text" name="username" required  value = <?php echo $user; ?>><br><br>
   			Enter old password:&nbsp&nbsp<br> 
-  			<input type="integer" name="passwrd"><br><br>
+  			<input type="integer" name="passwrd" required ><br><br>
   			New Password:&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp<br> 
-  			<input type="text" name="passwrd1"><br><br>
+  			<input type="text" name="passwrd1" required ><br><br>
   			Confirm New Password:&nbsp&nbsp<br>
-  			<input type="text" name="passwrd2" size="40"><br><br>
+  			<input type="text" name="passwrd2" size="40" required ><br><br>
 			<input type="submit" value="Update" >
 		</form>
 		</div>

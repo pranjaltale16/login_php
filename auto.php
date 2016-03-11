@@ -1,22 +1,23 @@
+<?php 
+session_start();
 
-<!doctype html>
-<html>
-<body>
-  <?php
+
     $user = $pass ="";
       if ($_SERVER["REQUEST_METHOD"] == "POST"){
          if(empty($_POST['username']))
             {
                      echo "UserName/Password is empty!";
                                 return false;
-                                 }
+                                }
           else{  $user= test_input($_POST["username"]);}
            if(empty($_POST['passwrd']))
               {
                        echo "Password is left blank";
                                   return false;
                                    }
-            else{ $pass= test_input($_POST["passwrd"]);}
+            else{ $pass= test_input($_POST["passwrd"]);
+                  $pass = sha1($pass);    
+            }
               } 
 function test_input($data) {
         $data = trim($data);
@@ -41,19 +42,20 @@ $result=mysqli_query($conn, $sql);
 $count=mysqli_num_rows($result);
 
 if ($count==1) {
-       session_start();
-       $_SESSION["uname"] = $user;    
-       echo "<script> window.location.assign('profile.php') </script>";
+
+
+$_SESSION["uname"] = $user;
+$cookie_name = "user";
+$cookie_value = $user;
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+echo "<script> window.location.assign('profile.php') </script>";
             
 } else {
-        echo "Invalid Match $count";
+        echo "Invalid Match";
 }
 
 $conn->close()
 
 
  ?>
-
-</body>
-</head>
 

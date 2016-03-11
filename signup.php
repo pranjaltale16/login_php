@@ -5,12 +5,11 @@ session_start();
 <!DOCTYPE html>
 
 <?php
+$erremail =  " ";  $err = " " ;
 $servername ="172.25.55.156";
 $username = "test";
 $password = "test";
 $database = "test";
-$conn = mysqli_connect($servername,$username,$password,$database);
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){ 
 $name=test_input($_POST['name']);
@@ -22,7 +21,8 @@ $ptwo = test_input($_POST['passwrd2']);
 $gen = test_input($_POST['gender']);
 $dob = test_input($_POST['dob']);
 }
-
+$pone = sha1($pone);
+$ptwo = sha1($ptwo);
 function test_input($data) {
         $data = trim($data);
            $data = stripslashes($data);
@@ -30,17 +30,29 @@ function test_input($data) {
                  return $data;
                     }
  
+$check =1;
 
+if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+     
+} else {
+      $erremail = "is not a valid email address" ;
+     $GLOBALS['check']= 0;
+}
 
+$conn = mysqli_connect($servername,$username,$password,$database);
 $sql = "INSERT INTO pranjal_signup(name,mobile,email,username,passwrd1,passwrd2,gender,DOB) VALUES ('$name','$mno','$email','$uname','$pone','$ptwo','$gen','$dob-12-12')";
-if($pone == $ptwo)  
+if($pone == $ptwo and $check == 1)  
  {
 if (mysqli_query($conn, $sql)  ) {
    echo "DONE"; 
 }
+   else
+   {echo "user name already in use "; } 
+
  } 
 else {
-       echo "Error try again";
+       $err = "Error try again";
+      echo $erremail;
 }
 
       mysqli_close($conn);
@@ -61,17 +73,17 @@ else {
 <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "post">
 		
 			  Name:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
-  			<input type="text" name="name" placeholder = "Pranjal"><br><br>
+  			<input type="text" name="name" placeholder = "Pranjal" required><br><br>
         Mobile no:&nbsp&nbsp&nbsp&nbsp
-        <input type="integer" name="mobileno" placeholder = "9584752163"><br><br>
+        <input type="integer" name="mobileno" placeholder = "9584752163" required ><br><br>
         E-mail&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
-        <input type= "text" name ="email" placeholder = "ptale16mail.com"><br><br>
+        <input type= "text" name ="email" placeholder = "ptale16mail.com" required ><br><br>
 		 	  User name:&nbsp&nbsp &nbsp
-  			<input type="text" name="username" placeholder = "Pranjaltale16"><br><br>
+  			<input type="text" name="username" placeholder = "Pranjaltale16" required><br><br>
   			Password:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
-  			<input type="password" name="passwrd1" placeholder = "**********" ><br><br>
+  			<input type="password" name="passwrd1" placeholder = "**********" required><br><br>
         Re-Password:
-                <input type="password" name="passwrd2" placeholder = "**********" >
+                <input type="password" name="passwrd2" placeholder = "**********" required>
 		</div>
 		<div class="rdo">
   			<input type="radio" name="gender" value="male"  selected> Male
