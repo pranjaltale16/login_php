@@ -45,6 +45,7 @@ if($pone == $ptwo and $check == 1)
  {
 if (mysqli_query($conn, $sql)  ) {
    echo "DONE"; 
+   
 }
    else
    {echo "user name already in use "; } 
@@ -60,18 +61,55 @@ else {
 
 <html>
 	<head>
+
 		<link rel="stylesheet" type="text/css" href="css/sign.css">
 		<link rel="icon" href="images/favicon.ico" type="image/gif" sizes="16x16">
-	<title>SIGN-UP</title>
-	</head>
+	
 
+<!--<script type="text/javascript">
+  function checkusername(){
+        var name = document.getElementById("username").value;
+        console.log(name);
+        if(name !== "") {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            if(xmlhttp.responseText !== "ok"){ document.getElementById("errorfield").innerHTML = "username already exists!!" ;}
+            else{ document.getElementById("errorfield").innerHTML = "";}
+          }
+        };
+        xmlhttp.open("GET", "checkdata.php?name=" +name, true);
+        xmlhttp.send();
+        }
+  }
+  </script>
+	-->
+<script>
+function showHint(str) {
+    var xhttp;
+      if (str.length == 0) { 
+            document.getElementById("errorfield").innerHTML = "";
+                return;
+                  }
+        xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        document.getElementById("errorfield").innerHTML = xhttp.responseText;
+                            }
+                  };
+            xhttp.open("GET", "gethint.php?q="+str, true);
+              xhttp.send();   
+}
+</script>
+
+  <title>SIGN-UP</title>
+	</head>
 	<body  >
 	<div class="all"   >
   <fieldset><legend>Hello</legend>
 		<span class="top"><h2></h2></span>
 		<div class="input">
-<form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "post">
-		
+    <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "post">
 			  Name:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
   			<input type="text" name="name" placeholder = "Pranjal" required><br><br>
         Mobile no:&nbsp&nbsp&nbsp&nbsp
@@ -79,7 +117,7 @@ else {
         E-mail&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
         <input type= "text" name ="email" placeholder = "ptale16mail.com" required ><br><br>
 		 	  User name:&nbsp&nbsp &nbsp
-  			<input type="text" name="username" placeholder = "Pranjaltale16" required><br><br>
+  			<input type="text" onkeyup="showHint(this.value)" name="username" placeholder = "Pranjaltale16" required><span id = "errorfield" ></span><br><br>
   			Password:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
   			<input type="password" name="passwrd1" placeholder = "**********" required><br><br>
         Re-Password:
