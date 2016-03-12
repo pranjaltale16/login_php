@@ -3,9 +3,9 @@ session_start();
 ?>
 <!DOCTYPE html>
 <?php
- $errformat = "";
+$flag = 1;
+$errformat = "";
 $name = $_SESSION["uname"];
-echo $name ;
 function test_input($data) {
        $data = trim($data);
        $data = stripslashes($data); 
@@ -19,6 +19,7 @@ if (empty($_POST["email"])) {
   // check if e-mail address is well-formed
   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errformat =  "Invalid email format"; 
+    $flag = 0;
   }
 }
 
@@ -32,20 +33,18 @@ $target_dir = "uploads/";
 $target_file = $target_dir.basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-echo $target_file;
 
 $target_dira = "uploads/";
 $target_filea = $target_dira.basename($_FILES["fileToUploa"]["name"]);
 $uploadOka = 1;
 $imageFileTypea = pathinfo($target_filea,PATHINFO_EXTENSION);
-echo $target_filea;
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
         $checka = getimagesize($_FILES["fileToUploa"]["name"]);
         $uploadOka = 1;
 }
 // Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0 and $uploadOka == 0) {
+if ($uploadOk == 0 and $uploadOka == 0 or $flag == 0) {
       echo "Sorry, your file was not uploaded.";
       // if everything is ok, try to upload file
 } else {

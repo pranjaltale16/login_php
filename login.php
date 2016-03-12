@@ -1,9 +1,8 @@
-
 <!doctype html>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="css/sign.css">
-	<div class="all"   >
+  	<div class="all"   >
 </head>
 </body>
 

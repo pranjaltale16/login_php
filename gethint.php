@@ -50,7 +50,6 @@ $sql = "SELECT username FROM pranjal_signup";
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $a[] = $row['username'];
-           
         }
     }
 
