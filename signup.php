@@ -56,7 +56,7 @@ if($pone == $ptwo and $check == 1)
 
  } 
 else {
-       $err = "Error try again";
+       $err = "Error try again mail address";
       echo $erremail;
 }
 
@@ -120,7 +120,7 @@ function showHint(str) {
         Mobile no:&nbsp&nbsp&nbsp&nbsp
         <input type="integer" name="mobileno" placeholder = "9584752163" required ><br><br>
         E-mail&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
-        <input type= "text" name ="email" placeholder = "ptale16mail.com" required ><br><br>
+        <input type= "email" name ="email" placeholder = "ptale16mail.com" required ><br><br>
 		 	  User name:&nbsp&nbsp &nbsp
   			<input type="text" onkeyup="showHint(this.value)" name="username" placeholder = "Pranjaltale16" required><span id = "errorfield" ></span><br><br>
   			Password:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 

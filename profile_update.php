@@ -96,7 +96,7 @@ if ($uploadOk == 0 and $uploadOka == 0 or $flag == 0) {
   			Mobile No:&nbsp&nbsp<br>
   			<input type="integer" name="mobileno"required ><br><br>
   			E-mail:&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp <?php  echo $errformat;  ?>   <br>
-  			<input type="text" name="email" required ><br><br>
+  			<input type="email" name="email" required  ><br><br>
   			Profile pic:&nbsp&nbsp<br>
   			<input type="file" name="fileToUpload" size="40" required ><br><br>
 	    	Cover pic:&nbsp&nbsp<br>
